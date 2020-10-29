@@ -19,6 +19,9 @@ public class PuzzleGame extends JFrame implements ActionListener {
     JPanel gamePanel = new JPanel();
     JPanel optionsPanel = new JPanel();
 
+    //Move counter
+    int clicks = 0;
+
     //Buttons
     JButton newGameButton = new JButton("Nytt Spel");
     JButton sortTilesButton = new JButton("Sortera rätt");
@@ -69,13 +72,6 @@ public class PuzzleGame extends JFrame implements ActionListener {
         }
     }
 
-    public void sortTilesInOrder() {
-        for (int i = 0; i < gameTiles.size() - 1; i++) {
-            gameTiles.get(i).setText(i + 1 + "");
-        }
-        gameTiles.get(15).setVisible(false);
-    }
-
     public void startNewGame() {
         //Cleanup
         gamePanel.removeAll();
@@ -90,6 +86,25 @@ public class PuzzleGame extends JFrame implements ActionListener {
         sortTilesButton.setVisible(true);
         setSize(400, 350);
     }
+
+    private void checkGameCondition() {
+        for (int i = 0; i < gameTiles.size() - 1; i++) {
+            JButton button = gameTiles.get(i);
+            if (button.getText().equals("")) return;
+            else if (Integer.parseInt(button.getText()) != (i + 1)) return;
+        }
+        JOptionPane.showMessageDialog(null, "Grattis, du vann!\n" + "Antal drag: " + clicks);
+        System.exit(0);
+    }
+
+    public void sortTilesInOrder() {
+        for (int i = 0; i < gameTiles.size() - 1; i++) {
+            gameTiles.get(i).setText(i + 1 + "");
+        }
+        gameTiles.get(15).setVisible(false);
+    }
+
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
