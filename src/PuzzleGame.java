@@ -62,6 +62,13 @@ public class PuzzleGame extends JFrame implements ActionListener {
         }
     }
 
+    public void sortTilesInOrder() {
+        for (int i = 0; i < gameTiles.size() - 1; i++) {
+            gameTiles.get(i).setText(i + 1 + "");
+        }
+        gameTiles.get(15).setVisible(false);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
