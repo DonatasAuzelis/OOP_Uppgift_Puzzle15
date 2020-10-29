@@ -136,14 +136,17 @@ public class PuzzleGame extends JFrame implements ActionListener {
         gameTiles.get(15).setVisible(false);
     }
 
-
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == newGameButton)
             startNewGame();
-        else if (e.getSource() == sortTilesButton){}
-        else {}
+        else if (e.getSource() == sortTilesButton)
+            sortTilesInOrder();
+        else {
+            tryToSwapTiles((JButton)e.getSource());
+            checkGameCondition();
+            clicks++;
+        }
 
     }
 }
