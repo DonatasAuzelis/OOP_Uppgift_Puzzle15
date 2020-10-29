@@ -39,6 +39,13 @@ public class PuzzleGame extends JFrame implements ActionListener {
         panel.add("West", optionsPanel);
         optionsPanel.setLayout(new GridLayout(2, 1));
 
+        newGameButton.addActionListener(this);
+        optionsPanel.add(newGameButton);
+
+        sortTilesButton.addActionListener(this);
+        optionsPanel.add(sortTilesButton);
+        sortTilesButton.setVisible(false);
+
         //Frame settings
         pack();
         setVisible(true);
@@ -69,8 +76,27 @@ public class PuzzleGame extends JFrame implements ActionListener {
         gameTiles.get(15).setVisible(false);
     }
 
+    public void startNewGame() {
+        //Cleanup
+        gamePanel.removeAll();
+        gamePanel.revalidate();
+        gamePanel.repaint();
+
+        //Add methods
+        addAndShuffleTiles();
+        addButtonListeners();
+
+        //Frame settings
+        sortTilesButton.setVisible(true);
+        setSize(400, 350);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == newGameButton)
+            startNewGame();
+        else if (e.getSource() == sortTilesButton){}
+        else {}
 
     }
 }
