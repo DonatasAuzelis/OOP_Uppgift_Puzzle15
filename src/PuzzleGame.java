@@ -19,14 +19,15 @@ public class PuzzleGame extends JFrame implements ActionListener {
     JPanel gamePanel = new JPanel();
     JPanel optionsPanel = new JPanel();
 
-    //Move counter
-    int clicks = 0;
-
     //Buttons
     JButton newGameButton = new JButton("Nytt Spel");
     JButton sortTilesButton = new JButton("Sortera rätt");
 
+    //Button list
     ArrayList<JButton> gameTiles;
+
+    //Move counter
+    int clicks = 0;
 
     public PuzzleGame() {
 
@@ -87,7 +88,7 @@ public class PuzzleGame extends JFrame implements ActionListener {
         setSize(400, 350);
     }
 
-    public void isEmpty(int index, JButton clicked) {
+    public void checkIfTileIsEmpty(int index, JButton clicked) {
         JButton testButton = gameTiles.get(index);
         if (testButton.getText().equals("")) {
             testButton.setText(clicked.getText());
@@ -100,20 +101,19 @@ public class PuzzleGame extends JFrame implements ActionListener {
         int index = gameTiles.indexOf(button);
 
         try {
-            isEmpty(index - 1, button); //Ett steg vänster
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println();
-        }
-        try {
-            isEmpty(index - 4, button); //Ett steg upp
+            checkIfTileIsEmpty(index - 1, button); //Ett steg vänster
         } catch (IndexOutOfBoundsException e) {
             System.out.println();
         }try {
-            isEmpty(index +1 , button); //Ett steg höger
+            checkIfTileIsEmpty(index - 4, button); //Ett steg upp
         } catch (IndexOutOfBoundsException e) {
             System.out.println();
         }try {
-            isEmpty(index +4, button); //Ett steg ner
+            checkIfTileIsEmpty(index +1 , button); //Ett steg höger
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println();
+        }try {
+            checkIfTileIsEmpty(index +4, button); //Ett steg ner
         } catch (IndexOutOfBoundsException e) {
             System.out.println();
         }
