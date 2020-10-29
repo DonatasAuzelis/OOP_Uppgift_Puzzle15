@@ -87,6 +87,38 @@ public class PuzzleGame extends JFrame implements ActionListener {
         setSize(400, 350);
     }
 
+    public void isEmpty(int index, JButton clicked) {
+        JButton testButton = gameTiles.get(index);
+        if (testButton.getText().equals("")) {
+            testButton.setText(clicked.getText());
+            clicked.setText("");
+        }
+    }
+
+    public void tryToSwapTiles(JButton button) {
+
+        int index = gameTiles.indexOf(button);
+
+        try {
+            isEmpty(index - 1, button); //Ett steg vänster
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println();
+        }
+        try {
+            isEmpty(index - 4, button); //Ett steg upp
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println();
+        }try {
+            isEmpty(index +1 , button); //Ett steg höger
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println();
+        }try {
+            isEmpty(index +4, button); //Ett steg ner
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println();
+        }
+    }
+
     private void checkGameCondition() {
         for (int i = 0; i < gameTiles.size() - 1; i++) {
             JButton button = gameTiles.get(i);
