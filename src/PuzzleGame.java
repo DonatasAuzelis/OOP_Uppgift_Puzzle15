@@ -14,10 +14,12 @@ import java.util.Collections;
  */
 public class PuzzleGame extends JFrame implements ActionListener {
 
+    //Panels
     JPanel panel = new JPanel();
     JPanel gamePanel = new JPanel();
     JPanel optionsPanel = new JPanel();
 
+    //Buttons
     JButton newGameButton = new JButton("Nytt Spel");
     JButton sortTilesButton = new JButton("Sortera rätt");
 
@@ -25,15 +27,19 @@ public class PuzzleGame extends JFrame implements ActionListener {
 
     public PuzzleGame() {
 
+        //Main panel
         add(panel);
         panel.setLayout(new BorderLayout());
 
+        //Game panel
         panel.add("Center", gamePanel);
         gamePanel.setLayout(new GridLayout(4, 4));
 
+        //Options Panel
         panel.add("West", optionsPanel);
         optionsPanel.setLayout(new GridLayout(2, 1));
 
+        //Frame settings
         pack();
         setVisible(true);
         setLocationRelativeTo(null);
