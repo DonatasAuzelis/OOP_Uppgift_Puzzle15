@@ -102,21 +102,16 @@ public class PuzzleGame extends JFrame implements ActionListener {
 
         try {
             checkIfTileIsEmpty(index - 1, button); //Ett steg vänster
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println();
-        }try {
+        } catch (IndexOutOfBoundsException ignored) {} //Execption sväljning, FÅR INTE GÖRA SÅ!!!!!!!!!!!!
+        try {
             checkIfTileIsEmpty(index - 4, button); //Ett steg upp
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println();
-        }try {
+        } catch (IndexOutOfBoundsException ignored) {}
+        try {
             checkIfTileIsEmpty(index +1 , button); //Ett steg höger
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println();
-        }try {
+        } catch (IndexOutOfBoundsException ignored) {}
+        try {
             checkIfTileIsEmpty(index +4, button); //Ett steg ner
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println();
-        }
+        } catch (IndexOutOfBoundsException ignored) {}
     }
 
     private void checkGameCondition() {
@@ -147,6 +142,5 @@ public class PuzzleGame extends JFrame implements ActionListener {
             checkGameCondition();
             clicks++;
         }
-
     }
 }
